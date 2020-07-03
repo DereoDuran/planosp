@@ -1,5 +1,7 @@
 # Acompanhamento independente dos indicadores do Plano SP de reabertura
 
+### [Acesse o site: https://dereooo.github.io/planosp/](https://dereooo.github.io/planosp/)
+
 ### Descrição encontrada no [Site do Plano São Paulo](https://www.saopaulo.sp.gov.br/planosp/):
 
 "A retomada consciente dos setores da economia começa a funcionar em 1º de junho. O estado está dividido em 17 Departamentos Regionais de Saúde, que estão categorizados segundo uma escala de cinco níveis de abertura econômica.
