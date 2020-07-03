@@ -36,18 +36,47 @@ def updateData():
         nome_munic, codigo_ibge, dia, mes, datahora, casos, casos_novos, casos_pc, casos_mm7d, obitos, obitos_novos, obitos_pc, obitos_mm7d, letalidade, nome_ra, cod_ra, nome_drs, cod_drs, pop, pop_60, area, map_leg, map_leg_s, latitude, longitude, semana_epidem = casos_e_obitos[item]
 
         if nome_munic == 'Ignorado': continue
+        if not nome_munic in mun_info:
+            print(nome_munic)
+            continue
 
         if datahora in db[mun_info[nome_munic]]:
-        
             dicPrev = db[mun_info[nome_munic]][datahora]
+        else:
+            dicPrev = {
+            'casos': 0,
+            'casos_novos': 0,
+            'obitos': 0,
+            'obitos_novos': 0,
+            'pop': 0,
+        }
         
-            dicPrev['casos'] += casos
-            dicPrev['casos_novos'] += casos_novos
-            dicPrev['obitos'] += obitos
-            dicPrev['obitos_novos'] += obitos_novos
-            dicPrev['pop'] += pop
+        dicPrev['casos'] += casos
+        dicPrev['casos_novos'] += casos_novos
+        dicPrev['obitos'] += obitos
+        dicPrev['obitos_novos'] += obitos_novos
+        dicPrev['pop'] += pop
 
-            db[mun_info[nome_munic]][datahora] = dicPrev
+        db[mun_info[nome_munic]][datahora] = dicPrev
+
+        if datahora in db['Estado de São Paulo']:
+            dicPrev = db['Estado de São Paulo'][datahora]
+        else:
+            dicPrev = {
+            'casos': 0,
+            'casos_novos': 0,
+            'obitos': 0,
+            'obitos_novos': 0,
+            'pop': 0,
+        }
+        
+        dicPrev['casos'] += casos
+        dicPrev['casos_novos'] += casos_novos
+        dicPrev['obitos'] += obitos
+        dicPrev['obitos_novos'] += obitos_novos
+        dicPrev['pop'] += pop
+
+        db['Estado de São Paulo'][datahora] = dicPrev
     
     with open('data/db.json', 'w') as f:
         json.dump(db, f)
@@ -71,7 +100,7 @@ def drsInfo():
 
     drs_info['DRS 09 Marília'] = ['Adamantina', 'Alvinlândia', 'Assis', 'Bastos', 'Bernardino de Campos', 'Borá', 'Campos Novos Paulista', 'Chavantes', 'Cândido Mota', 'Echaporã', 'Espírito Santo do Turvo', 'Fernão', 'Flórida Paulista', 'Garça', 'Guaimbê', 'Guarantã', 'Gália', 'Herculândia', 'Iacri', 'Ibirarema', 'Inúbia Paulista', 'Ipaussu', 'Júlio Mesquita', 'Lucélia', 'Lupércio', 'Lutécia', 'Maracaí', 'Mariápolis', 'Marília', 'Ocauçu', 'Oriente', 'Oscar Bressane', 'Osvaldo Cruz', 'Ourinhos', 'Pacaembu', 'Palmital', 'Paraguaçu Paulista', 'Parapuã', 'Pedrinhas Paulista', 'Platina', 'Pompéia', 'Pracinha', 'Queiroz', 'Quintana', 'Ribeirão do Sul', 'Rinópolis', 'Sagres', 'Salmourão', 'Salto Grande', 'Santa Cruz do Rio Pardo', 'São Pedro do Turvo', 'Tarumã', 'Timburi', 'Tupã', 'Ubirajara', 'Vera Cruz', 'Álvaro de Carvalho', 'Óleo']
 
-    drs_info['DRS 15 São José do Rio Preto'] = ['Adolfo', 'Américo de Campos', "Aparecida d'Oeste", 'Ariranha', 'Aspásia', 'Bady Bassitt', 'Bálsamo', 'Cardoso', 'Catanduva', 'Catiguá', 'Cedral', 'Cosmorama', 'Dirce Reis', 'Dolcinópolis', 'Elisiário', 'Embaúba', "Estrela d'Oeste", 'Fernando Prestes', 'Fernandópolis', 'Floreal', 'Gastão Vidigal', 'General Salgado', 'Guapiaçu', "Guarani d'Oeste", 'Ibirá', 'Icém', 'Indiaporã', 'Ipiguá', 'Irapuã', 'Itajobi', 'Jaci', 'Jales', 'José Bonifácio', 'Macaubal', 'Macedônia', 'Magda', 'Marapoama', 'Marinópolis', 'Mendonça', 'Meridiano', 'Mesópolis', 'Mira Estrela', 'Mirassol', 'Mirassolândia', 'Monte Aprazível', 'Monções', 'Neves Paulista', 'Nhandeara', 'Nipoã', 'Nova Aliança', 'Nova Granada', 'Novais', 'Novo Horizonte', 'Onda Verde', 'Ouroeste', 'Palestina', 'Palmares Paulista', "Palmeira d'Oeste", 'Paranapuã', 'Paraíso', 'Parisi', 'Paulo de Faria', 'Pedranópolis', 'Pindorama', 'Pirangi', 'Planalto', 'Poloni', 'Pontalinda', 'Pontes Gestal', 'Populina', 'Potirendaba', 'Riolândia', 'Sales', 'Santa Adélia', 'Santa Albertina', "Santa Clara d'Oeste", 'Santa Fé do Sul', 'Santa Salete', 'Santana da Ponte Pensa', 'Sebastianópolis do Sul', 'São Francisco', 'São José do Rio Preto', 'São João das Duas Pontes', 'São João de Iracema', 'Tabapuã', 'Tanabi', 'Três Fronteiras', 'Turmalina', 'Ubarana', 'Uchoa', 'União Paulista', 'Urupês', 'Urânia', 'Valentim Gentil', 'Vitória Brasil', 'Votuporanga', 'Zacarias', 'Álvares Florence']
+    drs_info['DRS 15 São José do Rio Preto'] = ['Adolfo', 'Américo de Campos', "Aparecida d'Oeste", 'Ariranha', 'Aspásia', 'Bady Bassitt', 'Bálsamo', 'Cardoso', 'Catanduva', 'Catiguá', 'Cedral', 'Cosmorama', 'Dirce Reis', 'Dolcinópolis', 'Elisiário', 'Embaúba', "Estrela d'Oeste", 'Fernando Prestes', 'Fernandópolis', 'Floreal', 'Gastão Vidigal', 'General Salgado', 'Guapiaçu', "Guarani d'Oeste", 'Ibirá', 'Icém', 'Indiaporã', 'Ipiguá', 'Irapuã', 'Itajobi', 'Jaci', 'Jales', 'José Bonifácio', 'Macaubal', 'Macedônia', 'Magda', 'Marapoama', 'Marinópolis', 'Mendonça', 'Meridiano', 'Mesópolis', 'Mira Estrela', 'Mirassol', 'Mirassolândia', 'Monte Aprazível', 'Monções', 'Neves Paulista', 'Nhandeara', 'Nipoã', 'Nova Aliança', 'Nova Granada', 'Novais', 'Novo Horizonte', 'Onda Verde', 'Ouroeste', 'Orindiúva', 'Palestina', 'Palmares Paulista', "Palmeira d'Oeste", 'Paranapuã', 'Paraíso', 'Parisi', 'Paulo de Faria', 'Pedranópolis', 'Pindorama', 'Pirangi', 'Planalto', 'Poloni', 'Pontalinda', 'Pontes Gestal', 'Populina', 'Potirendaba', 'Riolândia', 'Sales', 'Santa Adélia', 'Santa Albertina', "Santa Clara d'Oeste", 'Santa Fé do Sul', 'Santa Salete', 'Santana da Ponte Pensa', 'Sebastianópolis do Sul', 'São Francisco', 'São José do Rio Preto', 'São João das Duas Pontes', 'São João de Iracema', 'Tabapuã', 'Tanabi', 'Três Fronteiras', 'Turmalina', 'Ubarana', 'Uchoa', 'União Paulista', 'Urupês', 'Urânia', 'Valentim Gentil', 'Vitória Brasil', 'Votuporanga', 'Zacarias', 'Álvares Florence']
 
     drs_info['DRS 14 São João da Boa Vista'] = ['Aguaí', 'Caconde', 'Casa Branca', 'Divinolândia', 'Espírito Santo do Pinhal', 'Estiva Gerbi', 'Itapira', 'Itobi', 'Mococa', 'Mogi Guaçu', 'Mogi Mirim', 'Santa Cruz das Palmeiras', 'Santo Antônio do Jardim', 'São José do Rio Pardo', 'São João da Boa Vista', 'São Sebastião da Grama', 'Tambaú', 'Tapiratiba', 'Vargem Grande do Sul', 'Águas da Prata']
 
