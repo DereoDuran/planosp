@@ -293,18 +293,18 @@ class Dashboard():
                 var_range = dic[toggleDate(max_date)][drs] - dic[toggleDate(min_date)][drs]
                 var = dic[toggleDate(min_date)][drs] + var_range*position/date_range
 
-            if var >= 80:
-                indicador = 1
-            elif var >= 70:
-                indicador = 2
-            elif var >= 60:
-                indicador = 3
-            else:
-                indicador = 4
-            return {
-                'ocupacao_leitos_uti': var,
-                'indicador': indicador
-            }
+        if var >= 80:
+            indicador = 1
+        elif var >= 70:
+            indicador = 2
+        elif var >= 60:
+            indicador = 3
+        else:
+            indicador = 4
+        return {
+            'ocupacao_leitos_uti': var,
+            'indicador': indicador
+        }
 
 if __name__ == '__main__':
 
