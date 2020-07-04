@@ -268,6 +268,32 @@ class Dashboard():
             'Município de São Paulo': 78,
         }
 
+        dic['2020-07-02'] = {
+            'DRS 02 Araçatuba': 47.6,
+            'DRS 03 Araraquara': 33.4,
+            'DRS 04 Baixada Santista': 50.8,
+            'DRS 05 Barretos': 76.7,
+            'DRS 06 Bauru': 58.8,
+            'DRS 07 Campinas': 80,
+            'DRS 08 Franca': 70.5,
+            'DRS 09 Marília': 35.2,
+            'DRS 10 Piracicaba': 70.1,
+            'DRS 11 Presidente Prudente': 58.9,
+            'DRS 12 Registro': 37.4,
+            'DRS 13 Ribeirão Preto': 86.4,
+            'DRS 14 São João da Boa Vista': 40.2,
+            'DRS 15 São José do Rio Preto': 52.3,
+            'DRS 16 Sorocaba': 68,
+            'DRS 17 Taubaté': 50,
+            'Estado de São Paulo': 64,
+            'Grande SP Leste': 58.3,
+            'Grande SP Norte': 59.6,
+            'Grande SP Oeste': 62.7,
+            'Grande SP Sudeste': 57.8,
+            'Grande SP Sudoeste': 59.0,
+            'Município de São Paulo': 67,
+        }
+
         if isinstance(data, str):
             data = toggleDate(data)
 
