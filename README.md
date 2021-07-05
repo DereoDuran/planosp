@@ -1,6 +1,6 @@
 ## Acompanhamento independente dos indicadores do Plano SP de reabertura
 
-### Acesse o site: [https://duranjoe.github.io/planosp/](https://duranjoe.github.io/planosp/)
+### Acesse o site: [https://dereoduran.github.io/planosp/](https://dereoduran.github.io/planosp/)
 
 #### Descrição encontrada no [Site do Plano São Paulo](https://www.saopaulo.sp.gov.br/planosp/):
 
